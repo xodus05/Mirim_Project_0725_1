@@ -8,10 +8,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
@@ -43,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
         MyFragment selectedFragment = null;
-
 
         if(myFrags[tab.getPosition()] == null){
             selectedFragment = new MyFragment();
@@ -84,14 +86,21 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             layout.setOrientation(LinearLayout.VERTICAL);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             layout.setLayoutParams(params);
+            layout.setGravity(Gravity.CENTER);
+            ImageView imgV = new ImageView(super.getActivity());
+            layout.addView(imgV);
+
             if(tabName.equals("최연준")){
                 layout.setBackgroundColor(Color.MAGENTA);
+                imgV.setImageResource(R.drawable.yz);
             }
             if(tabName.equals("고먕이연준")){
                 layout.setBackgroundColor(Color.YELLOW);
+                imgV.setImageResource(R.drawable.yza);
             }
             if(tabName.equals("연준아")){
                 layout.setBackgroundColor(Color.BLUE);
+                imgV.setImageResource(R.drawable.yzb);
             }
 
             return layout;
